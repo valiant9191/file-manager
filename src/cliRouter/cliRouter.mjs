@@ -7,6 +7,8 @@ import { CopyFileCm } from '../comands/CopyFile/CopyFileCm.mjs';
 import { MoveFileCm } from '../comands/MoveFile/MoveFileCm.mjs';
 import { DeleteFileCm } from '../comands/DeleteFile/DeleteFileCm.mjs';
 import { GetHash } from '../comands/GetHash/GetHashCm.mjs';
+import { CompressCm } from '../comands/Compress/CompressCm.mjs';
+import { DecompressCm } from '../comands/Decompress/DecompressCm.mjs';
 
 async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
     const argumentArray = argument.split(' ')
@@ -59,10 +61,12 @@ async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
                 rl.prompt()
                 break;
             case 'compress':
-
+                CompressCm(currentDirectory, argumentArray[1], argumentArray[2])
+                rl.prompt()
                 break;
             case 'decompress':
-
+                DecompressCm(currentDirectory, argumentArray[1], argumentArray[2])
+                rl.prompt()
                 break;
             default:
                 console.log('Unknown command: ' + argument)
