@@ -3,7 +3,9 @@ import { NavigationCommands } from '../comands/NavigationCommands/NavigationComm
 import { CreateFileCm } from '../comands/CreateFile/CreateFileCm.mjs';
 import { ReadFileCm } from '../comands/Readfile/ReadFileCm.mjs';
 import { RenameCm } from '../comands/Rename/RenameCm.mjs';
-import { CopyFileCm } from '../comands/CopyFile/CopyFile.mjs';
+import { CopyFileCm } from '../comands/CopyFile/CopyFileCm.mjs';
+import { MoveFileCm } from '../comands/MoveFile/MoveFileCm.mjs';
+import { DeleteFileCm } from '../comands/DeleteFile/DeleteFileCm.mjs';
 
 async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
     const argumentArray = argument.split(' ')
@@ -36,14 +38,17 @@ async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
                 rl.prompt()
                 break;
             case 'cp':
-                CopyFileCm(currentDirectory, argumentArray[1], argumentArray[2])
+                await CopyFileCm(currentDirectory, argumentArray[1], argumentArray[2])
                 rl.prompt()
                 break;
             case 'mv':
-
+                console.log(currentDirectory, argumentArray[1], argumentArray[2])
+                await MoveFileCm(currentDirectory, argumentArray[1], argumentArray[2])
+                rl.prompt()
                 break;
             case 'rm':
-
+                await DeleteFileCm(currentDirectory, argumentArray[1])
+                rl.prompt()
                 break;
             case 'os':
 
