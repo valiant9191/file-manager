@@ -1,6 +1,7 @@
 import { ConsoleList } from '../comands/consoleList/ConsoleList.mjs';
 import { NavigationCommands } from '../comands/NavigationCommands/NavigationCommands.mjs';
-import { ReadFileCm } from '../comands/Readfile/index.mjs';
+import { CreateFileCm } from '../comands/CreateFile/CreateFileCm.mjs';
+import { ReadFileCm } from '../comands/Readfile/ReadFileCm.mjs';
 
 async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
     const argumentArray = argument.split(' ')
@@ -25,7 +26,7 @@ async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
                 rl.prompt()
                 break;
             case 'add':
-
+                await CreateFileCm(argumentArray[1], currentDirectory)
                 rl.prompt()
                 break;
             case 'rn':

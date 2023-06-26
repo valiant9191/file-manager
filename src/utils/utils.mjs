@@ -1,4 +1,5 @@
 import fs from 'fs'
+import path from 'path'
 
 function getUserName() {
     const cliArguments = process.env
@@ -19,8 +20,23 @@ const comparePathDir = (currPath, homeDirPath) => {
     return (currPathLength === homeDirectoryLength)
 }
 
+function getAbsFilePath(filePath, currentPath) {
+    let absFilePath;
+    if (!path.isAbsolute(filePath)) {
+        if (filePath.includes('./') || filePath.includes('../')) {
+            absFilePath = path.resolve(currentPath, filePath);
+        } else {
+            absFilePath = path.join(currentPath, filePath);
+        };
+    } else {
+        absFilePath = filePath;
+    };
+    return absFilePath
+}
+
 export {
     getUserName,
     isDirectory,
-    comparePathDir
+    comparePathDir,
+    getAbsFilePath
 }
