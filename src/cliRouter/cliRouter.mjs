@@ -1,5 +1,5 @@
-import { ConsoleList } from '../consoleList/consoleList.mjs';
-import { NavigationCommands } from '../navigation/navigation.mjs';
+import { ConsoleList } from '../comands/consoleList/ConsoleList.mjs';
+import { NavigationCommands } from '../comands/NavigationCommands/NavigationCommands.mjs';
 
 async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
     const argumentArray = argument.split(' ')

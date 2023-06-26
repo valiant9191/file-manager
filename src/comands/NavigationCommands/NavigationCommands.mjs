@@ -1,7 +1,7 @@
 import os from 'node:os'
 import path from 'node:path';
-import { comparePathDir } from '../utils/utils.mjs';
 import { access } from 'node:fs/promises';
+import { comparePathDir } from '../../utils/utils.mjs';
 
 async function NavigationCommands(arg, currentDirectory, changeCurrentDir, rl) {
     const homedir = os.homedir()

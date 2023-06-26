@@ -1,7 +1,6 @@
-import os from 'node:os';
 import path from 'path';
 import { readdir } from 'fs/promises';
-import { isDirectory } from '../utils/utils.mjs';
+import { isDirectory } from '../../utils/utils.mjs';
 
 
 async function ConsoleList(pathLocation) {
