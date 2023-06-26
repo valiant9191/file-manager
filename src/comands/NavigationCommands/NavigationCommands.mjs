@@ -22,6 +22,11 @@ async function NavigationCommands(arg, currentDirectory, changeCurrentDir, rl) {
 
     // cd 
     if (arg[0] === 'cd') {
+        if (arg.length < 2) {
+            console.log('path argument is empty ...')
+            rl.prompt()
+            return
+        }
         const folder = arg[1]
         access(path.join(currentDirectory, folder))
             .then(

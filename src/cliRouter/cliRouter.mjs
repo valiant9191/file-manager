@@ -1,5 +1,6 @@
 import { ConsoleList } from '../comands/consoleList/ConsoleList.mjs';
 import { NavigationCommands } from '../comands/NavigationCommands/NavigationCommands.mjs';
+import { ReadFileCm } from '../comands/Readfile/index.mjs';
 
 async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
     const argumentArray = argument.split(' ')
@@ -20,10 +21,12 @@ async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
                 rl.prompt()
                 break;
             case 'cat':
-
+                await ReadFileCm(argumentArray[1], currentDirectory)
+                rl.prompt()
                 break;
             case 'add':
 
+                rl.prompt()
                 break;
             case 'rn':
 
@@ -51,6 +54,7 @@ async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
                 break;
             default:
                 console.log('Invalid input: ' + argument)
+                rl.prompt()
                 break;
         }
     } catch (e) {
