@@ -2,6 +2,8 @@ import { ConsoleList } from '../comands/consoleList/ConsoleList.mjs';
 import { NavigationCommands } from '../comands/NavigationCommands/NavigationCommands.mjs';
 import { CreateFileCm } from '../comands/CreateFile/CreateFileCm.mjs';
 import { ReadFileCm } from '../comands/Readfile/ReadFileCm.mjs';
+import { RenameCm } from '../comands/Rename/RenameCm.mjs';
+import { CopyFileCm } from '../comands/CopyFile/CopyFile.mjs';
 
 async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
     const argumentArray = argument.split(' ')
@@ -30,10 +32,12 @@ async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
                 rl.prompt()
                 break;
             case 'rn':
-
+                await RenameCm(currentDirectory, argumentArray[1], argumentArray[2])
+                rl.prompt()
                 break;
             case 'cp':
-
+                CopyFileCm(currentDirectory, argumentArray[1], argumentArray[2])
+                rl.prompt()
                 break;
             case 'mv':
 
@@ -54,7 +58,7 @@ async function CliRouter(argument, rl, currentDirectory, changeCurrentDir) {
 
                 break;
             default:
-                console.log('Invalid input: ' + argument)
+                console.log('Unknown command: ' + argument)
                 rl.prompt()
                 break;
         }
