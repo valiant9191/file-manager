@@ -8,7 +8,7 @@ async function MoveFileCm(currentPath, filePathFrom, filePathTo) {
     const absFilePathTo = path.join(path.resolve(absFilePathFrom, '..'), filePathTo, fileName)
 
     await rename(absFilePathFrom, absFilePathTo)
-        .catch(err => console.log(err.message))
+        .catch(err => console.log('Operation failed ', err.message))
 
 }
 
